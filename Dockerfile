@@ -1,11 +1,15 @@
 FROM python:3.13-bullseye
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED=1\
+    PIP_NO_CACHE_DIR=1 \
+    # Disable Poetry virtualenvs so packages install into the image env
+    POETRY_VIRTUALENVS_CREATE=false
 
 RUN mkdir /code
 
 WORKDIR /code
 
-RUN pip install poetry
+RUN python -m pip install --upgrade pip \
+    && pip install poetry
 
 COPY pyproject.toml poetry.lock ./
 
