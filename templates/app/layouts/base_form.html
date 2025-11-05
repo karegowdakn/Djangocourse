@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+{% endblock %}
+
+{% block page_js %}
+    <script>
+    const contentMarkdown = new EasyMDE({
+        element: document.getElementById("id_content"),
+        spellchecker: false,
+        status: false,
+        toolbarL: true,
+        forceSync: true
+    });
+    </script>
+{% endblock page_js %}
