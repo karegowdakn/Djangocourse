@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+{% load humanize %}
+
+{% block content %}
+  <p>You have created {{ user.article_count|intcomma }}
+    article{{ user.article_count|pluralize }}
+    and written {{ user.written_words }}
+    word{{ user.written_words|pluralize }}
+  </p>
+
+  <h1>Articles</h1>
+  <a href="{% url 'create_article' %}"><button>Create New Article</button></a>
+  <br />
+  <ul>
+    {% if articles %}
+      {% for article in articles %}
+        <li>
+          Title: <strong>{{ article.title }}</strong> - {{ article.word_count }} word{{ article.word_count|pluralize }}, <b>Status:</b> {{ article.status }}
+          <p>{{ article.content }}</p>
+          <a href="{% url 'update_article' article.id %}"><button type="button">Edit Article</button></a>
+          <a href="{% url 'delete_article' article.id %}"><button type="button">Delete Article</button></a>
+          <hr style="border-top: 1.5px dotted #da2f2f;" />
+        </li>
+      {% endfor %}
+    {% else %}
+      <li>No articles available.</li>
+    {% endif %}
+  </ul>
+{% endblock %}

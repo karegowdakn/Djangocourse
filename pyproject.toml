@@ -1,0 +1,26 @@
+[project]
+name = "djangocourse"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "kg",email = "karegowdakn28@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django (>=5.2.6,<6.0.0)",
+    "django-allauth[socialaccount] (>=65.12.1,<66.0.0)",
+    "python-dotenv (>=1.2.1,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "djangocourse", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "django-debug-toolbar (>=6.0.0,<7.0.0)"
+]
